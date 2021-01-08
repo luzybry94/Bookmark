@@ -4,5 +4,6 @@ class User < ApplicationRecord
     has_many :commented_books, through: :comments, source: :book
 
     has_secure_password
-    validates :email, presence: true 
+    validates :email, :username, presence: true 
+    validates :email, :username, uniqueness: true 
 end
