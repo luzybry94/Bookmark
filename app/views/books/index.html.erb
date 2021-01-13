@@ -1,0 +1,19 @@
+<h1>Books for Sale</h1>
+
+<% @books.each do |book| %>
+<div>
+  <ul>
+    <li>
+      <%= book.title %> <br>
+      <i>by</i> <%= book.author %>
+      <br>
+      <br>
+      Condition: <%= book.condition %>
+      <br>
+      <br>
+      Price: $<%= book.price %>
+    </li>
+  </ul>
+</div>
+<% end %>
+

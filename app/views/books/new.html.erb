@@ -1,0 +1,27 @@
+<h1>List A Book</h1>
+
+<%= form_for @book do |f| %>
+  
+  <%= f.label :title %>
+  <%= f.text_field :title%>
+  <br>
+  <br>
+  <%= f.label :author %>
+  <%= f.text_field :author%>
+  <br>
+  <br>
+  <%= f.label :genre %>
+  <%= f.text_field :genre%>
+  <br>
+  <br>
+  <%= f.label :condition %>
+  <%= f.text_field :condition%>
+  <br>
+  <br>
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+  <br>
+  <br>
+  <%= f.submit "Submit" %>
+<% end %>
+
