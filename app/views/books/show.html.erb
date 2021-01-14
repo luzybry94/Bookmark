@@ -2,28 +2,36 @@
 <i>by</i> <b><%= @book.author %></b>
 <br>
 <br>
-Genre: <%= @book.genre.name %>
+Genre: <%= @book.genre.name if @book.genre %>
 <br>
 <br>
 Condition: <%= @book.condition %>
 <br>
 <br>
-Price: <%= @book.price %>
+Price: $<%= @book.price %>
 <br>
 <br>
-Posted on: <%= @book.created_at.strftime("%m-%d-%Y")%>
+Posted on: <%= @book.created_at.strftime("%b %d, %Y")%>
 <br>
 <br>
 Contact: <%= @book.user.email %>
 <br><br>
+
 Comments:
-<% @comments.each do |comment| %>
-  <%= comment.user.username %> says:
-  <%= comment.content %>
-<% end %>
+  <ul>
+  <% @comments.each do |comment| %>
+  <li>
+    "<%= comment.content %>" - <%= comment.user.username %> (<%= comment.created_at.strftime("%m/%d/%Y") %>)
+    <br><br>
+   </li>
+  <% end %>
+  </ul>
+
+
 <br><br>
 <%= form_for @book.comments.build do |f| %>
     <%= f.label :content, "Post a comment: " %>
     <%= f.text_field :content %>
+    <%= f.hidden_field :book_id %>
   <%= f.submit "Post" %>
 <% end %>
