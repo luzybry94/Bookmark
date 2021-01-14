@@ -1,8 +1,8 @@
-<h1><%= @book.title %></h1>
+<h2><%= @book.title %></h2>
 <i>by</i> <b><%= @book.author %></b>
-<!--<br>
 <br>
-Genre: <%= @book.genre %> -->
+<br>
+Genre: <%= @book.genre.name %>
 <br>
 <br>
 Condition: <%= @book.condition %>
@@ -17,7 +17,7 @@ Posted on: <%= @book.created_at.strftime("%m-%d-%Y")%>
 Contact: <%= @book.user.email %>
 <br><br>
 Comments:
-<% @book.comments.each do |comment| %>
+<% @comments.each do |comment| %>
   <%= comment.user.username %> says:
   <%= comment.content %>
 <% end %>

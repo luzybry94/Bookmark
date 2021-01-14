@@ -1,4 +1,4 @@
-<h1>List A Book</h1>
+<h2>List A Book</h2>
 
 <%= form_for @book do |f| %>
   
@@ -10,20 +10,20 @@
   <%= f.text_field :author%>
   <br>
   <br>
-  <%= f.label "Select a genre:" %>
-  <%= f.collection_select :genre, Genre.all, :id, :name %>
-  Or create a new one:
-  <%= f.fields_for :genre do |g|%>
-    <%= g.text_field :name%>
+  <%= f.label "Select a Genre" %>
+  <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: true) %>
+  or Add a Genre
+  <%= f.fields_for :genre do |g| %>
+    <%= g.text_field :name %>
   <% end %>
   <br>
   <br>
   <%= f.label :condition %>
-  <%= f.text_field :condition%>
+  <%= f.select :condition, ["New", "Like New", "Good", "Fair", "Poor"] %>
   <br>
   <br>
-  <%= f.label :price %>
-  <%= f.number_field :price %>
+  <%= f.label :price, "$" %>
+  <%= f.number_field :price, in: 1..1000, step: 1 %>  
   <br>
   <br>
   <%= f.submit "Submit" %>
