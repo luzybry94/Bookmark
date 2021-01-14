@@ -4,6 +4,7 @@ class BooksController < ApplicationController
 
     def new
       @book = Book.new
+      @book.build_genre
     end
 
     def create
@@ -21,12 +22,13 @@ class BooksController < ApplicationController
 
     def show
       @book = Book.find_by_id(params[:id])
+      @comments = @book.comments
       redirect_to '/' if !@book
     end
 
     private
 
     def book_params
-        params.require(:book).permit(:title, :author, :genre, :condition, :price)
+        params.require(:book).permit(:title, :author, :condition, :price, :genre_id, genre_attributes: [:name])
     end
 end
