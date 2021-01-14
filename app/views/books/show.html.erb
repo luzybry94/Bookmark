@@ -1,0 +1,29 @@
+<h1><%= @book.title %></h1>
+<i>by</i> <b><%= @book.author %></b>
+<!--<br>
+<br>
+Genre: <%= @book.genre %> -->
+<br>
+<br>
+Condition: <%= @book.condition %>
+<br>
+<br>
+Price: <%= @book.price %>
+<br>
+<br>
+Posted on: <%= @book.created_at.strftime("%m-%d-%Y")%>
+<br>
+<br>
+Contact: <%= @book.user.email %>
+<br><br>
+Comments:
+<% @book.comments.each do |comment| %>
+  <%= comment.user.username %> says:
+  <%= comment.content %>
+<% end %>
+<br><br>
+<%= form_for @book.comments.build do |f| %>
+    <%= f.label :content, "Post a comment: " %>
+    <%= f.text_field :content %>
+  <%= f.submit "Post" %>
+<% end %>

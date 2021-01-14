@@ -10,8 +10,12 @@
   <%= f.text_field :author%>
   <br>
   <br>
-  <%= f.label :genre %>
-  <%= f.text_field :genre%>
+  <%= f.label "Select a genre:" %>
+  <%= f.collection_select :genre, Genre.all, :id, :name %>
+  Or create a new one:
+  <%= f.fields_for :genre do |g|%>
+    <%= g.text_field :name%>
+  <% end %>
   <br>
   <br>
   <%= f.label :condition %>
