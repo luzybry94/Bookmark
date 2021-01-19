@@ -1,4 +1,12 @@
-<h1>Books for Sale</h1>
+<% if params[:user_id] %>
+  <h2>Books for Sale by <%= @user.username %></h2>
+<% else %>
+  <h2>Books for Sale</h2>
+ <% end %>
+
+<%= form_tag("/books", method: "get") do %>
+  <%= select_tag "genre", options_from_collection_for_select(Genre.all, "id", "name"), include_blank: true %>
+<% end %>
 
 <% @books.each do |book| %>
 <div>
@@ -12,6 +20,9 @@
       <br>
       <br>
       Price: $<%= book.price %>
+      <br>
+      <br>
+      Posted: <%= book.created_at.strftime("%b %d, %Y")%>
     </li>
   </ul>
 </div>
