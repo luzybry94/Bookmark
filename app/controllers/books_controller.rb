@@ -3,8 +3,12 @@ class BooksController < ApplicationController
     before_action :redirect_home_if_not_logged_in
 
     def new
-      @book = Book.new
-      @book.build_genre
+      if current_user.id.to_s == params[:user_id]
+        @book = Book.new
+        @book.build_genre
+      else
+        redirect_to root_path
+      end
     end
 
     def create
@@ -17,13 +21,20 @@ class BooksController < ApplicationController
     end
 
     def index
-        @books = Book.all
+      if @user = User.find_by_id(params[:user_id])
+        @books = @user.books.recent_books
+      else
+        @books = Book.recent_books
+      end
     end
 
     def show
       @book = Book.find_by_id(params[:id])
-      @comments = @book.comments
-      redirect_to '/' if !@book
+      if @book
+        @comments = @book.comments
+      else
+        redirect_to root_path
+      end
     end
 
     private
