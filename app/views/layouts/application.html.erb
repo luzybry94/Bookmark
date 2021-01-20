@@ -10,8 +10,7 @@
   </head>
 
   <body>
-
-    <div>
+    <div class="topnav">
     <% if logged_in? %>
       <%= link_to "List A Book", new_user_book_path(current_user) %> |
       <%= link_to "Books For Sale", books_path %> |
@@ -20,12 +19,16 @@
       <%= link_to "Logout", logout_path, method: "delete" %>
     <% else %>
       <%= link_to "Login", login_path %> |
-      <%= link_to "Sign Up", signup_path %>
+      <%= link_to "Sign Up", signup_path %> |
+      <%= link_to "Log In With Google", '/auth/google_oauth2', method: :post %> |
+      <%= link_to "Log In With Github", '/auth/github', method: :post %>
     <% end %>
-      
-  
-  
     </div>
+
+    
+
+    <div class="wrapper">
     <%= yield %>
+    </div>
   </body>
 </html>
