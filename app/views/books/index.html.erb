@@ -8,14 +8,21 @@
   <%= select_tag "genre", options_from_collection_for_select(Genre.all, "id", "name"), include_blank: true %>
 <% end %>
 
+<div class="book-cards">
 <% @books.each do |book| %>
-<div>
+<div class="book-card">
   <ul>
     <li>
+      <div class="book-title">
       <%= link_to book.title, book_path(book) %> <br>
       <i>by</i> <%= book.author %>
-      <br>
-      <br>
+      </div>
+      <div class="img">
+      <% if book.image.attached? %>
+        <%= image_tag url_for(book.image) %> 
+      <% end %>
+      </div>
+      <div class="book-details">
       Condition: <%= book.condition %>
       <br>
       <br>
@@ -23,8 +30,11 @@
       <br>
       <br>
       Posted: <%= book.created_at.strftime("%b %d, %Y")%>
+      </div>
     </li>
   </ul>
 </div>
 <% end %>
+</div>
+
 
