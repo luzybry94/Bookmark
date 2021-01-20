@@ -1,0 +1,38 @@
+<%= render partial: 'layouts/errors', locals: {obj: @book}  %>
+
+<div class="book-form">
+  <div class="form">
+<%= form_for @book do |f| %>
+  
+  <%= f.label :title %>
+  <%= f.text_field :title%>
+  <br>
+  <br>
+  <%= f.label :author %>
+  <%= f.text_field :author%>
+  <br>
+  <br>
+  <%= f.label :image %> 
+  <%= f.file_field :image %>
+  <br>
+  <br>
+  <%= f.label "Select a Genre" %>
+  <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: true) %>
+  <span>or Add a Genre</span>
+  <%= f.fields_for :genre do |g| %>
+    <%= g.text_field :name %>
+  <% end %>
+  <br>
+  <br>
+  <%= f.label :condition %>
+  <%= f.select :condition, ["New", "Like New", "Good", "Fair", "Poor"] %>
+  <br>
+  <br>
+  <%= f.label :price, "$" %>
+  <%= f.number_field :price, in: 1..1000, step: 1 %>  
+  <br>
+  <br>
+  <%= f.submit %>
+<% end %>
+  </div>
+</div>
