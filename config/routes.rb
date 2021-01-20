@@ -8,14 +8,13 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
+
+  get '/auth/google_oauth2/callback' => 'sessions#omniauth_google'
+  get '/auth/github/callback' => 'sessions#omniauth_github'
   
-  resources :genres 
-  resources :comments
-  resources :books do
-    resources :comments
-  end
-
-
+  # resources :genres 
+  resources :comments, only: [:index, :new, :create]
+  resources :books
   resources :users do
     resources :books, only: [:index, :new, :create]
   end
