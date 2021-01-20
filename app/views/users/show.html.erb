@@ -1,2 +1,6 @@
 <h2>Welcome <%= @user.username %>!</h2>
 
+<p>Books Listed: <%= @user.books.count %></p>
+
+<p>Joined: <%= @user.created_at.strftime("%b %d, %Y") %></p>
+
