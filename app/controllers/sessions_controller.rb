@@ -20,7 +20,36 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+      current_user
       session.clear
       redirect_to root_path
     end
+
+    def omniauth_google
+      @user = User.google_omniauth(auth)
+        if @user.save
+          session[:user_id] = @user.id
+          redirect_to books_path
+        else
+          redirect_to root_path
+        end
+    end
+
+    def omniauth_github
+      @user = User.github_omniauth(auth)
+        if @user.save
+          session[:user_id] = @user.id
+          redirect_to books_path
+        else
+          @error = "Email or Username Missing"
+          render :welcome
+        end
+    end
+
+    private
+
+    def auth
+      request.env['omniauth.auth']
+    end
+    
 end
