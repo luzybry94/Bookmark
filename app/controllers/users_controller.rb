@@ -8,7 +8,7 @@ class UsersController < ApplicationController
        @user = User.new(user_params)
        if @user.save
           session[:user_id] = @user.id
-          redirect_to user_path(@user)
+          redirect_to books_path
        else
           render :new
        end
@@ -26,9 +26,13 @@ class UsersController < ApplicationController
       end
     end
 
+
+
     private
 
     def user_params
         params.require(:user).permit(:email, :username, :password)
     end
+
+    
 end
