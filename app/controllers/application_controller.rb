@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+    
     helper_method :current_user, :logged_in?, :redirect_home_if_not_logged_in
 
     private
