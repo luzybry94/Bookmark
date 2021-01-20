@@ -1,6 +1,12 @@
 <h2><%= @book.title %></h2>
 <i>by</i> <b><%= @book.author %></b>
 <br>
+<div class="img">
+ <% if @book.image.attached? %>
+   <%= image_tag url_for(@book.image) %>
+ <% end %>
+ </div>
+<br>
 <br>
 Genre: <%= @book.genre.name if @book.genre %>
 <br>
@@ -14,7 +20,7 @@ Price: $<%= @book.price %>
 Posted on: <%= @book.created_at.strftime("%b %d, %Y")%>
 <br>
 <br>
-Contact: <%= @book.user.email %>
+Seller: <%= link_to @book.user.username, user_books_path(@book.user)  %>
 <br><br>
 
 Comments:
@@ -35,3 +41,9 @@ Comments:
     <%= f.hidden_field :book_id %>
   <%= f.submit "Post" %>
 <% end %>
+<br>
+<br>
+<% if current_user == @book.user %>
+  <%= link_to "Edit", edit_book_path(@book) %> | <%= link_to "Delete", @book, method: "delete", data: { confirm: "Are you sure?" } %>
+<% end %>
+
