@@ -1,6 +1,35 @@
 <h2>Welcome <%= @user.username %>!</h2>
 
+<div class="user-details">
+
+<p>Email: <%= @user.email %></p>
 <p>Books Listed: <%= @user.books.count %></p>
 
 <p>Joined: <%= @user.created_at.strftime("%b %d, %Y") %></p>
+</div>
+
+<p style="text-align: left;"><b>Books I've Commented On:</b></p>
+
+<div class="book-cards">
+<% @commented_books.each do |book| %>
+<div class="book-card">
+  <ul>
+    <li>
+      <div class="book-title">
+      <%= link_to book.title, book_path(book) %> <br>
+      <i>by</i> <%= book.author %>
+      </div>
+      <div class="img">
+      <% if book.image.attached? %>
+        <%= image_tag url_for(book.image) %> 
+      <% end %>
+      </div>
+    </li>
+  </ul>
+</div>
+<% end %>
+</div>
+
+
+
 
