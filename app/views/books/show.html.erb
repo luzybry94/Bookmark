@@ -1,6 +1,8 @@
+<div class="title">
 <h2><%= @book.title %></h2>
 <i>by</i> <b><%= @book.author %></b>
 <br>
+</div>
 <div class="img">
  <% if @book.image.attached? %>
    <%= image_tag url_for(@book.image) %>
@@ -8,6 +10,7 @@
  </div>
 <br>
 <br>
+<div class="details">
 Genre: <%= @book.genre.name if @book.genre %>
 <br>
 <br>
@@ -22,6 +25,7 @@ Posted on: <%= @book.created_at.strftime("%b %d, %Y")%>
 <br>
 Seller: <%= link_to @book.user.username, user_books_path(@book.user)  %>
 <br><br>
+</div>
 
 Comments:
   <ul>
