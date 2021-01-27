@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       if logged_in?
         if current_user.id.to_s == params[:id]
          @user = User.find_by_id(params[:id])
+         @commented_books = @user.commented_books
          else
          redirect_to user_path(current_user)
          end
