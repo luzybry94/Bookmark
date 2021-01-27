@@ -26,9 +26,17 @@ class BooksController < ApplicationController
 
     def index
       if @user = User.find_by_id(params[:user_id])
-        @books = @user.books.recent_books
+        if !params[:genre].blank?
+          @books = Book.by_genre(params[:genre])
+        else
+          @books = @user.books.recent_books
+        end
       else
-        @books = Book.recent_books
+        if !params[:genre].blank?
+          @books = Book.by_genre(params[:genre])
+        else
+          @books = Book.recent_books
+        end
       end
     end
 
