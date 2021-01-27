@@ -12,17 +12,17 @@ class Book < ApplicationRecord
     self.genre
   end
 
-  def self.costs_more_than(amount)
-    where("price > ?", amount)
+  def self.order_by_price
+    order(price: :desc)
   end
 
   def self.by_genre(genre_id)
     where(genre: genre_id)
   end
 
-  def self.recent_books
-    self.order(created_at: :desc)
-  end
+  scope :recent_books, -> { order(created_at: :desc) }
+
+
 
 
 
