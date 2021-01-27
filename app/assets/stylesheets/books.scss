@@ -1,6 +1,11 @@
 // Place all the styles related to the Books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.field_with_errors {
+  border: red;
+}
+
 .book-cards {
     padding: 20px;
     display: grid;
@@ -10,18 +15,17 @@
 }
 
 .book-card {
-        color: grey;
-        box-shadow: 0 30px 40px rgba(0,0,0,.1);
-        padding: 20px;
-        border-radius: 15px;
-        background-color: whitesmoke;
+  color: grey;
+  box-shadow: 0 30px 40px rgba(0,0,0,.1);
+  padding: 20px;
+  border-radius: 15px;
+  background-color: whitesmoke;
 }
 
-.img {
-        border: 1px solid #ddd;
+.img  {
         border-radius: 4px;
         padding: 5px;
-        width: 150px;
+        width: 150px;  
 }
 
 select {
@@ -35,14 +39,14 @@ input[type=submit] {
     background-color: #105f94;
     border: none;
     color: white;
-    padding: 16px 32px;
+    padding: 8px 32px;
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
   }
 
 input[type=text] {
-    width: 40%;
+    width: 30%;
     padding: 5px 10px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -75,7 +79,36 @@ input {
     border: 2px solid lightgrey;
     font-size: 13px;
     padding: 5px 10px;
-    color: grey;
+    // color: grey;
  }
+
+ img {
+   width: 200px;
+ }
+
+ .title {
+   text-align: center;
+ }
+
+ .details {
+    width: 40%;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=email] {
+  width: 30%;
+  padding: 5px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=password] {
+  width: 30%;
+  padding: 5px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
 
 
