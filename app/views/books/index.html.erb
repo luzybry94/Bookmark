@@ -4,9 +4,12 @@
   <h2>Books for Sale</h2>
  <% end %>
 
-<%= form_tag("/books", method: "get") do %>
-  <%= select_tag "genre", options_from_collection_for_select(Genre.all, "id", "name"), include_blank: true %>
-<% end %>
+<div>
+  <%= form_tag("/books", method: "get") do %>
+    <%= select_tag "genre", options_from_collection_for_select(Genre.all, "id", "name"), { prompt: 'Select Genre' } %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
 
 <div class="book-cards">
 <% @books.each do |book| %>
