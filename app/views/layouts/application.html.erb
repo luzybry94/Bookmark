@@ -7,10 +7,12 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('BlackwithBookShelfIconEducationLogo.png') %>
   </head>
 
   <body>
     <div class="topnav">
+      <%= link_to "Home", root_path %> 
     <% if logged_in? %>
       <%= link_to "List A Book", new_user_book_path(current_user) %> |
       <%= link_to "Books For Sale", books_path %> |
