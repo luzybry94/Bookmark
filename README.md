@@ -2,7 +2,7 @@
 
 Bookmark is a Rails based application made for users to list books to sell in their local community. Users can create an account or login using Google, perform all CRUD actions for a book as well as leave comments on a particular listing.  
 
-##Installation Instructions
+## Installation Instructions
 
 1. Clone and `cd` into the repo
 2. Make sure to install all necessary gems:
