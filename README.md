@@ -1,24 +1,21 @@
-# README
+# Bookmark
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Bookmark is a Rails based application made for users to list books to sell in their local community. Users can create an account or login using Google, perform all CRUD actions for a book as well as leave comments on a particular listing.  
 
-Things you may want to cover:
+##Installation Instructions
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Clone and `cd` into the repo
+2. Make sure to install all necessary gems:
+```console
+    $ bundle install
+```
+3. Run migrations to get the database started
+```console
+    $ rails db:migrate
+```
+4. Start Rails server
+```console
+    $ rails s
+```
+5. Go to localhost:3000 in your browser
+6. Create an account and start selling those books!
